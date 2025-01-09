@@ -2,6 +2,8 @@ package com.example.CarApp.controller;
 
 import com.example.CarApp.dto.Car;
 import com.example.CarApp.service.CarService;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +48,10 @@ public class CarController {
         return carService.updateCar(car,id);
     }
 
-    @PatchMapping(path = "update_expiryDate", produces = "application/json")
-    public String updateCar(@RequestBody String newExpiry, @PathVariable("id") int id) {
-        LocalDate date = LocalDate.parse(newExpiry);
-        return carService.updateExpiryDate(date,id);
+    @PatchMapping(path = "update_expiryDate/{id}", produces = "application/json")
+    public String updateExpiryDate(@RequestBody Car car, @PathVariable("id") int id) {
+
+        return carService.updateExpiryDate(car,id);
     }
 }
 

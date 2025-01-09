@@ -2,11 +2,9 @@ package com.example.CarApp.service;
 
 import com.example.CarApp.dao.CarRepo;
 import com.example.CarApp.dto.Car;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,9 +43,9 @@ public class CarService {
         return carRepo.updateCar(car,id);
     }
 
-    public String updateExpiryDate(LocalDate newExpiry, int id) {
+    public String updateExpiryDate(Car car, int id) {
         Car original = fetchCarById(id);
-        original.setExpiryDate(newExpiry);
+        original.setExpiryDate(car.getExpiryDate());
         return carRepo.updateCar(original,id);
     }
 }

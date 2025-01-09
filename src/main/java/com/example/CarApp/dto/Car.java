@@ -11,12 +11,10 @@ public class Car {
 
     private int id;
 
-
     @NotBlank(message = "Name cannot be null")
     @Size(min = 3, max = 50, message = "Name should be between 3 and 50 characters")
     @Pattern(regexp = "[A-Za-z0-9]*", message = "Name should be alpha-numeric")
     private String name;
-
 
     @NotBlank(message = "Email cannot be null")
     @Size(min = 3, max = 50, message = "Name should be between 3 and 50 characters")
